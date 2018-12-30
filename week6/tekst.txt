@@ -1,10 +1,2 @@
-regel1
-regel2
-regel3
-regel4
-regel5
-regel6
-regel7
-regel8
-regel9
-regel10
+een nieuwe line vanuit de terminal
+een nieuwe line zonder de vorige te verwijderen
