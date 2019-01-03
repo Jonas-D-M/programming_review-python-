@@ -1,4 +1,5 @@
-
+from models.Melding import Melding
+from models.Locatie import Locatie
 
 
 class Stadsmedewerker():
@@ -57,3 +58,49 @@ class Stadsmedewerker():
             self.__te_verwerken.append(value)
         else:
             raise ValueError('Only object of the class Melding can be added to the list of te verwerken meldingen.')
+
+
+    def __str__(self):
+        return f'Voornaam: {self.voornaam}  Naam: {self.naam}   Dienst: {self.dienst} heeft de volgende meldingen te verwerken: '
+        for i in self.__te_verwerken:
+            print(i)
+
+
+    def __lt__(self, other):
+        if self.naam.lower() < other.naam.lower():
+            return True
+        else:
+            return False
+
+
+    def __eq__(self, other):
+        if self.naam.lower() == other.naam.lower() and self.voornaam.lower() == other.voornaam.lower() and self.dienst.lower() == other.dienst.lower():
+            return True
+        else:
+            return False
+
+
+    def verwerk_nieuwe_meldingen(self, *args):
+        for i in args:
+            self.__te_verwerken.append(i)
+
+
+    def selecteer_mijn_melding(self,  meldingen, categorie):
+        filtered_list = []
+        for i in meldingen:
+            if isinstance(i, Melding):
+                if i.categorie.lower() == categorie.lower():
+                    filtered_list.append(i)
+            else:
+                raise ValueError(f'Item at index {meldingen.index(i)} is not an object of the class Melding')
+        return filtered_list
+
+
+    def melding_verwerkt(self, melding):
+        if isinstance(melding, Melding):
+            if melding in self.__te_verwerken:
+                self.__te_verwerken.remove(melding)
+            else:
+                raise ValueError('The melding you have entered does not appear in the te_verwerken list.')
+        else:
+            raise ValueError('Needs to be an object of the class Melding')

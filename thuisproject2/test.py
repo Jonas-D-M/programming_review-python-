@@ -12,3 +12,4 @@ filtered_dict = Melding.analyse_categorie(meldingen)
 
 for k,v in filtered_dict.items():
     print(k,v)
+
