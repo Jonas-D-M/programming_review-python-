@@ -2,7 +2,8 @@ import re
 import random as rd
 import string
 
-
+""" checks a string for a varietie of characters, if one set of characters is not found method will return false and terminate
+if all characters are found method will return true """
 def password_control(apassword):
     if not re.search(r'[a-z]',apassword):
         return False
@@ -17,7 +18,8 @@ def password_control(apassword):
     else:
         return True
 
-
+""" Method automatically generates a random password that meets all requirements
+lazy method because doesn't generate unique characters it just copies characters that have already been generated. """
 def generate_correct_password():
     password = ''
     password += rd.choice(string.ascii_lowercase)*5
