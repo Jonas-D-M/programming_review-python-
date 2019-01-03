@@ -101,7 +101,7 @@ class Melding():
 
 
     def __lt__(self, other):
-        if self.categorie < other.categorie:
+        if self.locatie.straat < other.locatie.straat:
             return True
         else:
             return False
@@ -174,6 +174,15 @@ class Melding():
             else:
                 raise ValueError(f'item at index {list_meldingen.index(i)} is not an object of the class Melding')
         return analyse_dict
+
+
+    @staticmethod
+    def print_meldingen(list_meldingen):
+        for i in list_meldingen:
+            if isinstance(i, Melding):
+                print(i)
+            else:
+                raise ValueError(f'item at index {list_meldingen.index(i)} is not an object of the class Melding')
 
 
 

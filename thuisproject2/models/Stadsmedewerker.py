@@ -104,3 +104,8 @@ class Stadsmedewerker():
                 raise ValueError('The melding you have entered does not appear in the te_verwerken list.')
         else:
             raise ValueError('Needs to be an object of the class Melding')
+
+
+    def geef_alle_meldingen(self):
+        for i in self.__meldingen:
+            print(i)
