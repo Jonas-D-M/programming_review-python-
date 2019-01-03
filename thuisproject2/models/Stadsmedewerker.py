@@ -9,7 +9,7 @@ class Stadsmedewerker():
         self.voornaam = voornaam
         self.naam = naam
         self.dienst = dienst
-        self.__te_verwerken = []
+        self.__meldingen = []
 
 
     @property
@@ -49,20 +49,20 @@ class Stadsmedewerker():
 
 
     @property
-    def te_verwerken(self):
-        return self.__te_verwerken
+    def meldingen(self):
+        return self.__meldingen
 
-    @te_verwerken.setter
-    def te_verwerken(self, value):
+    @meldingen.setter
+    def meldingen(self, value):
         if isinstance (value, Melding):
-            self.__te_verwerken.append(value)
+            self.__meldingen.append(value)
         else:
             raise ValueError('Only object of the class Melding can be added to the list of te verwerken meldingen.')
 
 
     def __str__(self):
         return f'Voornaam: {self.voornaam}  Naam: {self.naam}   Dienst: {self.dienst} heeft de volgende meldingen te verwerken: '
-        for i in self.__te_verwerken:
+        for i in self.__meldingen:
             print(i)
 
 
@@ -80,12 +80,12 @@ class Stadsmedewerker():
             return False
 
 
-    def verwerk_nieuwe_meldingen(self, *args):
+    def verwerk_nieuwe_melding(self, *args):
         for i in args:
-            self.__te_verwerken.append(i)
+            self.__meldingen.append(i)
 
 
-    def selecteer_mijn_melding(self,  meldingen, categorie):
+    def selecteer_mijn_meldingen(self,  meldingen, categorie):
         filtered_list = []
         for i in meldingen:
             if isinstance(i, Melding):
@@ -98,8 +98,8 @@ class Stadsmedewerker():
 
     def melding_verwerkt(self, melding):
         if isinstance(melding, Melding):
-            if melding in self.__te_verwerken:
-                self.__te_verwerken.remove(melding)
+            if melding in self.__meldingen:
+                self.__meldingen.remove(melding)
             else:
                 raise ValueError('The melding you have entered does not appear in the te_verwerken list.')
         else:

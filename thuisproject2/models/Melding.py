@@ -93,7 +93,7 @@ class Melding():
 
     @property
     def info(self):
-        return f'Melding: {self}    Datum: {self.datum} Categorie: {self.categorie} Sub-Categorie: {self.subcategorie}'
+        return f'Melding: {self}    Datum: {self.meldingsdatum} Categorie: {self.categorie} Sub-Categorie: {self.subcategorie}'
 
 
     def __str__(self):
@@ -108,10 +108,10 @@ class Melding():
 
 
     @staticmethod
-    def inlezen_json(file_path):
+    def inlezen_json():
         meldingen = []
         try:
-            with open(file_path,'r', encoding='utf8') as f:
+            with open("thuisproject2\\bronbestand\meldingen_2016.json",'r', encoding='utf8') as f:
                 data = json.load(f)
                 for i in data:
                     lat = i['lat'].replace(",", ".")
@@ -163,7 +163,7 @@ class Melding():
 
 
     @staticmethod
-    def analyse_categorie(list_meldingen):
+    def analyse_categorien(list_meldingen):
         analyse_dict = {}
         for i in list_meldingen:
             if isinstance(i, Melding):
