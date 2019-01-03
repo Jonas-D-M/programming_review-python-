@@ -1,7 +1,12 @@
 from models.Locatie import Locatie
+import json
+import string
 
 
 class Melding():
+
+
+    __alle_meldingen = []
 
 
     def __init__(self, Locatie, categorie, subcategorie, soortbinnenkomst, doorlooptijd : int, meldingsdatum):
@@ -11,6 +16,7 @@ class Melding():
         self.soortbinnenkomst = soortbinnenkomst
         self.doorlooptijd = doorlooptijd
         self.meldingsdatum = meldingsdatum
+        Melding.__alle_meldingen.append(self)
 
 
     @property
@@ -83,6 +89,93 @@ class Melding():
             self.__meldingsdatum = value
         else:
             raise ValueError('meldingsdatum needs to be a string, format (dd/mm/yyyy)')
+
+
+    @property
+    def info(self):
+        return f'Melding: {self}    Datum: {self.datum} Categorie: {self.categorie} Sub-Categorie: {self.subcategorie}'
+
+
+    def __str__(self):
+        return f'{self.locatie} categorie: {self.categorie} Sub-categorie: {self.subcategorie}  Soortbinnenkomst: {self.soortbinnenkomst}   Doorlooptijd: {self.doorlooptijd}   Meldingsdatum: {self.meldingsdatum}'
+
+
+    def __lt__(self, other):
+        if self.categorie < other.categorie:
+            return True
+        else:
+            return False
+
+
+    @staticmethod
+    def inlezen_json(file_path):
+        meldingen = []
+        try:
+            with open(file_path,'r', encoding='utf8') as f:
+                data = json.load(f)
+                for i in data:
+                    lat = i['lat'].replace(",", ".")
+                    long = i['lon'].replace(",", ".")
+                    locatie = Locatie(i['Straat'], float(lat), float(long))
+                    categorie = i['categorie']
+                    subcategorie = i['subcategorie']
+                    soortbinnenkomst = i['Soortbinnenkomst']
+                    doorlooptijd = i['Doorlooptijd']
+                    doorlooptijd_int = int(doorlooptijd[0:2])
+                    meldingsdatum = i['dt_aangemeld']
+                    melding = Melding(locatie,categorie,subcategorie,soortbinnenkomst,doorlooptijd_int,meldingsdatum)
+                    meldingen.append(melding)
+                    Melding.__alle_meldingen.append(melding)
+                f.close()
+                return meldingen
+        except FileNotFoundError:
+            print('The file path you have entered does not seem to exist.')
+
+
+    @staticmethod
+    def select_categorie(list_meldingen, categorie):
+        filtered_list = []
+        for i in list_meldingen:
+            if isinstance(i, Melding):
+                if i.categorie.lower() == categorie.lower():
+                    filtered_list.append(i)
+            else:
+                raise ValueError(f'Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
+        if len(filtered_list) > 0:
+            return filtered_list
+        else:
+            return 'The categorie you have entered does not appear in the list.'
+
+
+    @staticmethod
+    def select_soortbinnenkomst(list_meldingen, soortbinnenkomst):
+        filtered_list = []
+        for i in list_meldingen:
+            if isinstance(i,Melding):
+                if i.soortbinnenkomst.lower() == soortbinnenkomst.lower():
+                    filtered_list.append(i)
+            else:
+                raise ValueError(f'Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
+        if len(filtered_list) > 0:
+            return filtered_list
+        else:
+            return 'The soortbinnenkomst you have entered does not seem to be in the entered list.'
+
+
+    @staticmethod
+    def analyse_categorie(list_meldingen):
+        analyse_dict = {}
+        for i in list_meldingen:
+            if isinstance(i, Melding):
+                if i.categorie not in analyse_dict:
+                    analyse_dict.update({i.categorie : 1})
+                else:
+                    analyse_dict[i.categorie] += 1
+            else:
+                raise ValueError(f'item at index {list_meldingen.index(i)} is not an object of the class Melding')
+        return analyse_dict
+
+
 
 
 

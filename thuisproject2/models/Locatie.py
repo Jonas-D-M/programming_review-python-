@@ -21,7 +21,7 @@ class Locatie:
 
     @latitude.setter
     def latitude(self, value):
-        if isinstace(value, float):
+        if isinstance(value, float):
             self.__latitude = value
         else:
             raise ValueError('De instantie latitude mag enkel een float zijn.')
