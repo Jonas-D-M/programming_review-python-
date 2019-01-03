@@ -1,3 +1,5 @@
+
+""" This method will try to convert a string to an int, returns true if possible false if not """
 def try_convert(astring):
     try:
         int(astring)
@@ -6,6 +8,7 @@ def try_convert(astring):
         return False
 
 
+""" This method will count the amount of words with three characters or less in a string """
 def count_small_words(astring):
     counter_words = 0
     counter_chars = 0
@@ -18,9 +21,11 @@ def count_small_words(astring):
             counter_chars = 0
     return counter_words
 
+
 astring = 'een string met daar in  kleine woorden'
 
 
+""" This method will count the amount of numbers in a string. """
 def count_numbers(astring):
     counter = 0
     for i in astring.split():
