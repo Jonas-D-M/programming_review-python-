@@ -1,7 +1,8 @@
 import random as rd
 import string
 
-
+""" This method will generate a random license plate consisting of one number, 3 uppercase letters and 3 random numbers
+all separated by a - """
 def generate_licenseplate ():
     licenseplate = ''
     licenseplate += str(rd.randrange(0,9))
@@ -14,6 +15,7 @@ def generate_licenseplate ():
     return licenseplate
 
 
+""" Method to print x plates, x being the desired number of plates entered as a parameter """
 def amount_of_plates (x):
     plates = []
     for i in range( 0, x):
