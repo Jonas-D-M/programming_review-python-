@@ -1,5 +1,7 @@
 from models.Melding import Melding
 from models.Locatie import Locatie
+from logging import stadsmedewerker_properties_logger
+from logging import stadsmedewerker_methods_logger
 
 
 class Stadsmedewerker():
@@ -21,7 +23,7 @@ class Stadsmedewerker():
         if isinstance(value, str):
             self.__voornaam = value
         else:
-            raise ValueError('voornaam needs to be a string.')
+            stadsmedewerker_properties_logger.error('voornaam needs to be a string.')
 
 
     @property
@@ -33,7 +35,7 @@ class Stadsmedewerker():
         if isinstance(value, str):
             self.__naam = value
         else:
-            raise ValueError('naam needs to be a string')
+            stadsmedewerker_properties_logger.error('naam needs to be a string')
 
 
     @property
@@ -45,7 +47,7 @@ class Stadsmedewerker():
         if isinstance(value, str):
             self.__dienst = value
         else:
-            raise ValueError('dienst needs to be a string.')
+            stadsmedewerker_properties_logger.error('dienst needs to be a string.')
 
 
     @property
@@ -57,7 +59,7 @@ class Stadsmedewerker():
         if isinstance (value, Melding):
             self.__meldingen.append(value)
         else:
-            raise ValueError('Only object of the class Melding can be added to the list of te verwerken meldingen.')
+            stadsmedewerker_properties_logger.error('Only object of the class Melding can be added to the list of te verwerken meldingen.')
 
 
     def __str__(self):
@@ -82,7 +84,10 @@ class Stadsmedewerker():
 
     def verwerk_nieuwe_melding(self, *args):
         for i in args:
-            self.__meldingen.append(i)
+            if isinstance(i, Melding):
+                self.__meldingen.append(i)
+            else:
+                stadsmedewerker_methods_logger.error(f'For verwerk nieuwe melding: item at index {args.index(i)} was not an object of the class meldig.')
 
 
     def selecteer_mijn_meldingen(self,  meldingen, categorie):
@@ -92,7 +97,7 @@ class Stadsmedewerker():
                 if i.categorie.lower() == categorie.lower():
                     filtered_list.append(i)
             else:
-                raise ValueError(f'Item at index {meldingen.index(i)} is not an object of the class Melding')
+                stadsmedewerker_methods_logger.error(f'For selecteer_mijn_melding: Item at index {meldingen.index(i)} is not an object of the class Melding')
         return filtered_list
 
 
@@ -101,9 +106,9 @@ class Stadsmedewerker():
             if melding in self.__meldingen:
                 self.__meldingen.remove(melding)
             else:
-                raise ValueError('The melding you have entered does not appear in the te_verwerken list.')
+                stadsmedewerker_methods_logger.error('For melding verwerkt: The melding you have entered does not appear in the te_verwerken list.')
         else:
-            raise ValueError('Needs to be an object of the class Melding')
+            stadsmedewerker_methods_logger.error('For melding verwerkt: Needs to be an object of the class Melding')
 
 
     def geef_alle_meldingen(self):

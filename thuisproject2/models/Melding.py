@@ -1,6 +1,6 @@
 from models.Locatie import Locatie
 from logging import melding_properties_logger
-from logging import melding_inlezen_file_logger
+from logging import melding_static_methods_logger
 import json
 import string
 
@@ -131,7 +131,7 @@ class Melding():
                 f.close()
                 return meldingen
         except FileNotFoundError as fn:
-            melding_inlezen_file_logger.error(f'{fn}')
+            melding_static_methods_logger.error(f'For inlezen_json: {fn}')
 
 
     @staticmethod
@@ -142,7 +142,7 @@ class Melding():
                 if i.categorie.lower() == categorie.lower():
                     filtered_list.append(i)
             else:
-                raise ValueError(f'Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
+                melding_static_methods_logger.error(f'For select_categorie: Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
         if len(filtered_list) > 0:
             return filtered_list
         else:
@@ -157,7 +157,7 @@ class Melding():
                 if i.soortbinnenkomst.lower() == soortbinnenkomst.lower():
                     filtered_list.append(i)
             else:
-                raise ValueError(f'Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
+                melding_static_methods_logger(f'For select_soort_binnekomst: Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
         if len(filtered_list) > 0:
             return filtered_list
         else:
@@ -174,7 +174,7 @@ class Melding():
                 else:
                     analyse_dict[i.categorie] += 1
             else:
-                raise ValueError(f'item at index {list_meldingen.index(i)} is not an object of the class Melding')
+                melding_static_methods_logger(f'For analyse_categorie: item at index {list_meldingen.index(i)} is not an object of the class Melding')
         return analyse_dict
 
 
@@ -184,7 +184,7 @@ class Melding():
             if isinstance(i, Melding):
                 print(i)
             else:
-                raise ValueError(f'item at index {list_meldingen.index(i)} is not an object of the class Melding')
+                melding_static_methods_logger(f'For print_meldingen: item at index {list_meldingen.index(i)} is not an object of the class Melding')
 
 
 

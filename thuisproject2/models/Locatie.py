@@ -1,3 +1,7 @@
+from logging import locatie_logger
+
+
+
 class Locatie:
 
     def __init__(self, straat, latitude : float, longitude : float):
@@ -12,7 +16,10 @@ class Locatie:
 
     @straat.setter
     def straat(self, value):
-        self.__straat = value
+        if isinstance(value, str):
+            self.__straat = value
+        else:
+            locatie_logger.error('De value voor straat was geen string.')
 
 
     @property
@@ -24,7 +31,7 @@ class Locatie:
         if isinstance(value, float):
             self.__latitude = value
         else:
-            raise ValueError('De instantie latitude mag enkel een float zijn.')
+            locatie_logger.error('De value voor latitude was geen float.')
 
 
     @property
@@ -36,7 +43,7 @@ class Locatie:
         if isinstance(value, float):
             self.__longitude = value
         else:
-            raise ValueError('De instantie longitude mag enkel een float zijn.')
+            locatie_logger.error('De value voor longitude was geen float.')
 
 
     def __str__(self):
