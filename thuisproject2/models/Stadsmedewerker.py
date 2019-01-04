@@ -1,7 +1,7 @@
 from models.Melding import Melding
 from models.Locatie import Locatie
-from logging import stadsmedewerker_properties_logger
-from logging import stadsmedewerker_methods_logger
+from models.logging import stadsmedewerker_properties_logger
+from models.logging import stadsmedewerker_methods_logger
 
 
 class Stadsmedewerker():

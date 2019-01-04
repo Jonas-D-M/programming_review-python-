@@ -1,6 +1,6 @@
 from models.Locatie import Locatie
-from logging import melding_properties_logger
-from logging import melding_static_methods_logger
+from models.logging import melding_properties_logger
+from models.logging import melding_static_methods_logger
 import json
 import string
 
@@ -134,9 +134,9 @@ class Melding():
                             melding_static_methods_logger.error(ve)
                     except ValueError as ve:
                         melding_static_methods_logger.error(ve)
+                melding_static_methods_logger.info(f'File has been read succesfully, {len(meldingen)} objects have been created.')
                 f.close()
                 return meldingen
-                melding_static_methods_logger.info(f'File has been read succesfully, {len(meldingen)} objects have been created.')
         except FileNotFoundError as fn:
             melding_static_methods_logger.error(f'For inlezen_json: {fn}')
 

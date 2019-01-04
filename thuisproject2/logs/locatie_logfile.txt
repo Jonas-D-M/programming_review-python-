@@ -1,0 +1,3 @@
+2019-01-04 17:07:36,997 [ERROR]: De value voor straat was geen string. in c:\Users\cotty\Desktop\programming_review\thuisproject2\models\Locatie.py:22
+2019-01-04 17:07:36,997 [ERROR]: De value voor latitude was geen float. in c:\Users\cotty\Desktop\programming_review\thuisproject2\models\Locatie.py:34
+2019-01-04 17:07:36,997 [ERROR]: De value voor longitude was geen float. in c:\Users\cotty\Desktop\programming_review\thuisproject2\models\Locatie.py:46

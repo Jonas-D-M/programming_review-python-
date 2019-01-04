@@ -1,0 +1,2 @@
+2019-01-04 17:06:57,464 [INFO]: File has been read succesfully, 500 objects have been created. in c:\Users\cotty\Desktop\programming_review\thuisproject2\models\Melding.py:137
+2019-01-04 17:07:36,956 [INFO]: File has been read succesfully, 500 objects have been created. in c:\Users\cotty\Desktop\programming_review\thuisproject2\models\Melding.py:137

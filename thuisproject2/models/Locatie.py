@@ -1,4 +1,4 @@
-from logging import locatie_logger
+from models.logging import locatie_logger
 
 
 
