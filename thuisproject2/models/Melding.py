@@ -123,13 +123,20 @@ class Melding():
                     subcategorie = i['subcategorie']
                     soortbinnenkomst = i['Soortbinnenkomst']
                     doorlooptijd = i['Doorlooptijd']
-                    doorlooptijd_int = int(doorlooptijd[0:2])
-                    meldingsdatum = i['dt_aangemeld']
-                    melding = Melding(locatie,categorie,subcategorie,soortbinnenkomst,doorlooptijd_int,meldingsdatum)
-                    meldingen.append(melding)
-                    Melding.__alle_meldingen.append(melding)
+                    try:
+                        doorlooptijd_int = int(doorlooptijd[0:2])
+                        meldingsdatum = i['dt_aangemeld']
+                        try:
+                            melding = Melding(locatie,categorie,subcategorie,soortbinnenkomst,doorlooptijd_int,meldingsdatum)
+                            meldingen.append(melding)
+                            Melding.__alle_meldingen.append(melding)
+                        except ValueError as ve:
+                            melding_static_methods_logger.error(ve)
+                    except ValueError as ve:
+                        melding_static_methods_logger.error(ve)
                 f.close()
                 return meldingen
+                melding_static_methods_logger.info(f'File has been read succesfully, {len(meldingen)} objects have been created.')
         except FileNotFoundError as fn:
             melding_static_methods_logger.error(f'For inlezen_json: {fn}')
 
@@ -145,8 +152,9 @@ class Melding():
                 melding_static_methods_logger.error(f'For select_categorie: Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
         if len(filtered_list) > 0:
             return filtered_list
+            melding_static_methods_logger.info(f'Select_method categorie has been executed succesfully, a filtered list of {len(filtered_list)} has been created')
         else:
-            return 'The categorie you have entered does not appear in the list.'
+            melding_static_methods_logger.info('The categorie that was entered does not appear in the list.')
 
 
     @staticmethod
@@ -157,7 +165,7 @@ class Melding():
                 if i.soortbinnenkomst.lower() == soortbinnenkomst.lower():
                     filtered_list.append(i)
             else:
-                melding_static_methods_logger(f'For select_soort_binnekomst: Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
+                melding_static_methods_logger.error(f'For select_soort_binnekomst: Item at index {list_meldingen.index(i)} is not an object of the class Melding.')
         if len(filtered_list) > 0:
             return filtered_list
         else:
@@ -174,7 +182,7 @@ class Melding():
                 else:
                     analyse_dict[i.categorie] += 1
             else:
-                melding_static_methods_logger(f'For analyse_categorie: item at index {list_meldingen.index(i)} is not an object of the class Melding')
+                melding_static_methods_logger.error(f'For analyse_categorie: item at index {list_meldingen.index(i)} is not an object of the class Melding')
         return analyse_dict
 
 
@@ -184,7 +192,7 @@ class Melding():
             if isinstance(i, Melding):
                 print(i)
             else:
-                melding_static_methods_logger(f'For print_meldingen: item at index {list_meldingen.index(i)} is not an object of the class Melding')
+                melding_static_methods_logger.error(f'For print_meldingen: item at index {list_meldingen.index(i)} is not an object of the class Melding')
 
 
 
