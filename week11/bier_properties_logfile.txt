@@ -1,0 +1,4 @@
+2019-01-04 12:27:07,736 [ERROR]: The variable entered for biernaam was not a string or empty in c:\Users\cotty\Desktop\programming_review\week11\models\Bier.py:25
+2019-01-04 12:27:07,736 [ERROR]: The variable entered for brouwerijnaam was not a string or empty in c:\Users\cotty\Desktop\programming_review\week11\models\Bier.py:38
+2019-01-04 12:27:07,736 [ERROR]: The variable entered for kleur was not a string or empty in c:\Users\cotty\Desktop\programming_review\week11\models\Bier.py:50
+2019-01-04 12:27:07,737 [ERROR]: The variable entered for alcoholpercentage was not a float. in c:\Users\cotty\Desktop\programming_review\week11\models\Bier.py:62

@@ -1,11 +1,9 @@
 import logging
-from models.setup_logger import create_log
+from models.logger import  bier_properties_logger
+from models.logger import bier_file_reader_logger
 
 
 class Bier():
-
-
-    logger = create_log('week11\\bier_logs.txt')
 
 
     def __init__(self, biernaam, brouwerijnaam, kleur, alcoholpercentage : float):
@@ -24,7 +22,7 @@ class Bier():
         if isinstance(value, str) and value != '':
             self.__biernaam = value
         else:
-            logging.error('The variable entered for biernaam was not a string or empty')
+            bier_properties_logger.error('The variable entered for biernaam was not a string or empty')
 
 
 
@@ -37,7 +35,7 @@ class Bier():
         if isinstance(value, str) and value != '':
             self.__brouwerijnaam = value
         else:
-            logging.error('The variable entered for brouwerijnaam was not a string or empty')
+            bier_properties_logger.error('The variable entered for brouwerijnaam was not a string or empty')
 
 
     @property
@@ -49,7 +47,7 @@ class Bier():
         if isinstance(value, str) and value != '':
             self.__kleur = value
         else:
-            logging.error('The variable entered for kleur was not a string or empty')
+            bier_properties_logger.error('The variable entered for kleur was not a string or empty')
 
 
     @property
@@ -61,7 +59,7 @@ class Bier():
         if isinstance(value, float):
             self.__alcoholpercentage = value
         else:
-            logging.error('The variable entered for alcoholpercentage was not a float.')
+            bier_properties_logger.error('The variable entered for alcoholpercentage was not a float.')
 
 
 
