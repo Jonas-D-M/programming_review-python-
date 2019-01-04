@@ -1,7 +1,10 @@
 from models.Bier import Bier
 
 
-bier = Bier(5,3,2,'string')
+list_bieren = Bier.inlezen_bieren()
 
+for i in list_bieren:
+    print(i)
 
-print('kijken of hij niet crashed')
+print(len(list_bieren))
+
