@@ -5,7 +5,7 @@ from models.setup_logger import create_log
 class Bier():
 
 
-    logger = create_log('bier_logs.txt')
+    logger = create_log('week11\\bier_logs.txt')
 
 
     def __init__(self, biernaam, brouwerijnaam, kleur, alcoholpercentage : float):

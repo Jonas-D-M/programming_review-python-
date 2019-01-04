@@ -1,8 +1,0 @@
-2019-01-04 12:05:26,561,561 root ERROR The variable entered for biernaam was not a string or empty
-2019-01-04 12:05:26,561,561 root ERROR The variable entered for brouwerijnaam was not a string or empty
-2019-01-04 12:05:26,561,561 root ERROR The variable entered for kleur was not a string or empty
-2019-01-04 12:05:26,561,561 root ERROR The variable entered for alcoholpercentage was not a float.
-2019-01-04 12:06:28,076,76 root ERROR The variable entered for biernaam was not a string or empty
-2019-01-04 12:06:28,076,76 root ERROR The variable entered for brouwerijnaam was not a string or empty
-2019-01-04 12:06:28,076,76 root ERROR The variable entered for kleur was not a string or empty
-2019-01-04 12:06:28,076,76 root ERROR The variable entered for alcoholpercentage was not a float.
