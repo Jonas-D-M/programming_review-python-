@@ -1,0 +1,8 @@
+INFO:root:Gekozen getal: 565
+INFO:root:Gekozen getal: 378
+INFO:root:Gekozen getal: 300
+INFO:root:Gekozen getal: 742
+INFO:root:Gekozen getal: 736
+INFO:root:Gekozen getal: 276
+INFO:root:De lijst met even getallen: [378, 300, 742, 736, 276]
+INFO:root:De gekozen even getallen zijn: [378, 300, 742, 736, 276] 
