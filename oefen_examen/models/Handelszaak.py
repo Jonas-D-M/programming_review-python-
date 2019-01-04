@@ -24,3 +24,17 @@ class Handelszaak(Adres):
 
     def __str__(self):
         return f'{super().__str__()}  telefoonnummer: {self.telefoonnummer}'
+
+
+    def __eq__(self, other):
+        if super().__eq__(other) and self.telefoonnummer == other.telfoonnummer:
+            return True
+        else:
+            return False
+
+
+    def __lt__ (self, other):
+        if super().__lt__(other):
+            return True
+        else:
+            return False
