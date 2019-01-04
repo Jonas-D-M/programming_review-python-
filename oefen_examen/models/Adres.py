@@ -53,7 +53,11 @@ class Adres():
 
     @gemeente.setter
     def gemeente(self, value):
-        if isinstance(gemeente, str):
+        if isinstance(value, str):
             self.__gemeente = value
         else:
             adres_properties_logger.error('Gemeente needs to be a string')
+
+
+    def __str__(self):
+        return f'Straat: {self.straat}  Huisnummer: {self.huisnummer}   Postcode: {self.postcode}   Gemeente: {self.gemeente}'

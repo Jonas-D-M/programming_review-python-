@@ -1,5 +1,5 @@
 from models.Adres import Adres
-from logger import handelszaak_properties_logger
+from models.logger import handelszaak_properties_logger
 
 
 class Handelszaak(Adres):
@@ -20,3 +20,7 @@ class Handelszaak(Adres):
             self.__telefoonnummer = value
         else:
             handelszaak_properties_logger.error('Telefoonnummer has to be a string.')
+
+
+    def __str__(self):
+        return f'{super().__str__()}  telefoonnummer: {self.telefoonnummer}'
