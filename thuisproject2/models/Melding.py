@@ -1,4 +1,6 @@
 from models.Locatie import Locatie
+from logging import melding_properties_logger
+from logging import melding_inlezen_file_logger
 import json
 import string
 
@@ -28,7 +30,7 @@ class Melding():
         if isinstance(value, Locatie):
             self.__locatie = value
         else:
-            raise ValueError('Can only be an object of the class locatie')
+            melding_properties_logger.error('Value was not an object of the class locatie')
 
 
     @property
@@ -40,7 +42,7 @@ class Melding():
         if isinstance(value, str):
             self.__categorie = value
         else:
-            raise ValueError('categorie needs to be a string')
+            melding_properties_logger.error('Value for categorie was not a string')
 
 
     @property
@@ -52,7 +54,7 @@ class Melding():
         if isinstance(value, str):
             self.__subcategorie = value
         else:
-            raise ValueError('subcategorie needs to be a string')
+            melding_properties_logger.error('Value for subcategorie was not a string')
 
 
     @property
@@ -64,7 +66,7 @@ class Melding():
         if isinstance(value, str):
             self.__soortbinnenkomst = value
         else:
-            raise ValueError('soortbinnenkomst needs to be a string')
+            melding_properties_logger.error('Value for soortbinnenkomst was not a string')
 
 
     @property
@@ -76,7 +78,7 @@ class Melding():
         if isinstance(value, int):
             self.__doorlooptijd = value
         else:
-            raise ValueError('doorlooptijd needs to be an int.')
+            melding_properties_logger.error('Value for doorlooptijd was not an int')
 
 
     @property
@@ -88,7 +90,7 @@ class Melding():
         if isinstance(value, str):
             self.__meldingsdatum = value
         else:
-            raise ValueError('meldingsdatum needs to be a string, format (dd/mm/yyyy)')
+            melding_properties_logger.error('Value for meldingsdatum was not a string')
 
 
     @property
@@ -128,8 +130,8 @@ class Melding():
                     Melding.__alle_meldingen.append(melding)
                 f.close()
                 return meldingen
-        except FileNotFoundError:
-            print('The file path you have entered does not seem to exist.')
+        except FileNotFoundError as fn:
+            melding_inlezen_file_logger.error(f'{fn}')
 
 
     @staticmethod
