@@ -1,0 +1,7 @@
+2019-01-05 16:15:56,386 [ERROR]: object at index 0 was not an object of the class Hotelkamer in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:29
+2019-01-05 16:16:26,781 [ERROR]: object at index 0 was not an object of the class Hotelkamer in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:29
+2019-01-05 16:17:01,337 [ERROR]: object at index 0 was not an object of the class Hotelkamer in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:29
+2019-01-05 17:08:17,750 [INFO]: Een reservatie werd gemaakt voor [<models.Hotelgast.Hotelgast object at 0x02E1E490>] in kamer 2 in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:51
+2019-01-05 17:11:17,760 [INFO]: Een reservatie werd gemaakt voor [<models.Hotelgast.Hotelgast object at 0x02DFE4F0>] in kamer 3 in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:51
+2019-01-05 17:13:08,055 [INFO]: Een reservatie werd gemaakt voor [<models.Hotelgast.Hotelgast object at 0x02F1F4F0>] in kamer 2 in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:51
+2019-01-05 17:14:04,016 [INFO]: Een reservatie werd gemaakt voor [<models.Hotelgast.Hotelgast object at 0x02ECE4F0>] in kamer 2 in c:\Users\cotty\Desktop\programming_review\hotel\models\Hotel.py:51

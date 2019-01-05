@@ -45,3 +45,7 @@ class Hotelgast():
         else:
             hotelgast_properties_logger.error('adres needs to be a string')
 
+
+    def __str__(self):
+        return f'Naam: {self.naam}  Voornaam: {self.voornaam}   adres: {self.adres}'
+

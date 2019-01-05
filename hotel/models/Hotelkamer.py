@@ -33,3 +33,8 @@ class Hotelkamer():
         else:
             hotelkamer_properties_logger.error('Only objects of the class hotelgast kan be added to the gastenlijst')
 
+    def __str__(self):
+        return f'Kamernummer: {self.kamernummer}'
+        for i in self.gastenlijst:
+            print(i)
+
