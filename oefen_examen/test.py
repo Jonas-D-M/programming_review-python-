@@ -1,8 +1,8 @@
-from model.Huisartspraktijk import Huisartspraktijk
+from models.Huisartspraktijk import Huisartspraktijk
 
 
 def test():
-    bestandsnaam = "doc/huisartsen.csv"
+    bestandsnaam = "oefen_examen\\bronbestand\huisartsen.csv"
 
     huisartspraktijken = Huisartspraktijk.inlezen_huisartsen(bestandsnaam)
 
@@ -12,10 +12,10 @@ def test():
 
     print(praktijk)
 
-# test()
+test()
 
 def run():
-    bestandsnaam = "doc/huisartsen.csv"
+    bestandsnaam = "oefen_examen\\bronbestand\huisartsen.csv"
     huisartspraktijken = Huisartspraktijk.inlezen_huisartsen(bestandsnaam)
 
     actie = input("\nKies uit volgende menu-items:\np = print lijst huisartspraktijken, z = laad zoekfuncties, v = verlaat programma:>")

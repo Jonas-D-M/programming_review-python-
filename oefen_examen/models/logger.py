@@ -36,3 +36,14 @@ huisartspraktijk_properties_logger_file_handler = FileHandler(huisartspraktijk_p
 huisartspraktijk_properties_logger_file_handler.setLevel(LOG_LEVEL)
 huisartspraktijk_properties_logger_file_handler.setFormatter(Formatter(LOG_FORMAT))
 huisartspraktijk_properties_logger.addHandler(huisartspraktijk_properties_logger_file_handler)
+
+
+#huisartspraktijk methodes logger
+huisartspraktijk_methods_log_file = 'oefen_examen\\logs\\huisartspraktijk_methods_logfile.txt'
+
+huisartspraktijk_methods_logger = logging.getLogger('handelszaak.properties')
+huisartspraktijk_methods_logger.setLevel(LOG_LEVEL)
+huisartspraktijk_methods_logger_file_handler = FileHandler(huisartspraktijk_methods_log_file)
+huisartspraktijk_methods_logger_file_handler.setLevel(LOG_LEVEL)
+huisartspraktijk_methods_logger_file_handler.setFormatter(Formatter(LOG_FORMAT))
+huisartspraktijk_methods_logger.addHandler(huisartspraktijk_methods_logger_file_handler)
